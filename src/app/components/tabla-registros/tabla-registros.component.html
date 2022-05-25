@@ -1,0 +1,56 @@
+<div class="pt-4">
+  <table class="table table-hover table-striped-columns table-bordered">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Fecha</th>
+        <th>Fecha Actual</th>
+        <th>Cuotas</th>
+        <th>Monto</th>
+        <th>Origen</th>
+        <th>Estado Mes</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let debt of debts; index as i">
+        <td>{{ i + 1 }}</td>
+        <td>{{ debt.nombre }}</td>
+        <td>{{ debt.fecha | date: "dd-MM-yyyy" }}</td>
+        <td>{{ dateNow | date: "dd-MM-yyyy" }}</td>
+        <td>{{ debt.cuotas }}</td>
+        <td>{{ debt.monto | currency: "CLP":"symbol-narrow" }}</td>
+        <td>
+          <div [ngSwitch]="debt.origen">
+            <div *ngSwitchCase="'1'">Mastercard Gold Santander</div>
+            <div *ngSwitchCase="'2'">American Express Platinum Santander</div>
+            <div *ngSwitchCase="'3'">Visa Platinum BCI</div>
+            <div *ngSwitchCase="'4'">Otro</div>
+          </div>
+        </td>
+        <td>
+          <div [ngSwitch]="getPagoActual(debt)">
+            <span *ngSwitchCase="true" class="badge bg-success">Pagado</span>
+            <span *ngSwitchCase="false" class="badge bg-danger">No Pagado</span>
+          </div>
+        </td>
+        <td>
+          <button class="btn btn-sm btn-danger" (click)="delete(debt)">
+            Borrar
+          </button>
+          <button class="btn btn-sm btn-success" (click)="pagado(debt)">
+            Pagado
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="8" class="text-end"><b>TOTAL</b></td>
+        <td class="text-end">
+          {{ getTotal() | currency: "CLP":"symbol-narrow" }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <!-- botón para agregar -->
+    <div class="col-md-6">
+      <h1>Listado de Deudas</h1>
+    </div>
+    <div class="col-md-6 text-end">
+      <button
+        mat-fab
+        color="primary"
+        aria-label="Example icon button with a delete icon"
+        (click)="this.router.navigateByUrl('/add-debt')"
+      >
+        <mat-icon aria-hidden="false" aria-label="Example home icon"
+          >add</mat-icon
+        >
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- tabla con los registros -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <app-tabla-registros
+        [debts]="this._debts.debts"
+        (deleteEvent)="delete($event)"
+        (pagadoEvent)="pagado($event)"
+      ></app-tabla-registros>
+    </div>
+  </div>
+</div>

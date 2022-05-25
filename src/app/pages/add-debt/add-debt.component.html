@@ -1,0 +1,70 @@
+<div class="container">
+  <h1>Ingresa la deuda acá</h1>
+
+  <form [formGroup]="form" (ngSubmit)="saveDebt()">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Nombre Deuda</label>
+
+          <input
+            type="text"
+            class="form-control"
+            formControlName="nombre"
+            placeholder="Ingrese nombre..."
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="row pt-4">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Fecha Deuda</label>
+
+          <input type="date" class="form-control" formControlName="fecha" />
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="">Cantidad Cuotas</label>
+
+          <input type="number" class="form-control" formControlName="cuotas" />
+        </div>
+      </div>
+    </div>
+
+    <div class="row pt-4">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="">Monto</label>
+
+          <input type="number" class="form-control" formControlName="monto" />
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="">Origen</label>
+
+          <select name="" id="" class="form-control" formControlName="origen">
+            <option value="0">-- Seleccione --</option>
+            <option value="1">Mastercard Gold Santander</option>
+            <option value="2">American Express Platinum Santander</option>
+            <option value="3">Visa Platinum BCI</option>
+            <option value="4">Otro</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row pt-4">
+      <div class="col-md-12 text-center">
+        <button class="btn btn-success btn-lg" [disabled]="form.invalid">
+          Crear
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
