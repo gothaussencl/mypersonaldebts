@@ -7,6 +7,7 @@
         <th>Fecha</th>
         <th>Fecha Actual</th>
         <th>Cuotas</th>
+        <th>Cuotas Rest</th>
         <th>Monto</th>
         <th>Origen</th>
         <th>Estado Mes</th>
@@ -20,6 +21,9 @@
         <td>{{ debt.fecha | date: "dd-MM-yyyy" }}</td>
         <td>{{ dateNow | date: "dd-MM-yyyy" }}</td>
         <td>{{ debt.cuotas }}</td>
+        <td>
+          {{ getRestantes(debt) }}
+        </td>
         <td>{{ debt.monto | currency: "CLP":"symbol-narrow" }}</td>
         <td>
           <div [ngSwitch]="debt.origen">

@@ -41,4 +41,10 @@ export class TablaRegistrosComponent implements OnInit {
   getTotal() {
     return this.debts.reduce((sum, current) => sum + current.monto, 0);
   }
+
+  getRestantes(debt: any) {
+    let pagados = debt.pagos.length;
+
+    return debt.cuotas - pagados;
+  }
 }
