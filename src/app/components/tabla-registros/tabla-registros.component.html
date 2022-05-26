@@ -46,7 +46,7 @@
           <button
             class="btn btn-sm btn-success"
             (click)="pagado(debt)"
-            *ngIf="getPagoActual(debt)"
+            *ngIf="!getPagoActual(debt)"
           >
             Pagado
           </button>
