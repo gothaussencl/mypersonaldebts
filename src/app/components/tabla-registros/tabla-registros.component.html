@@ -30,7 +30,7 @@
             <div *ngSwitchCase="'1'">Mastercard Gold Santander</div>
             <div *ngSwitchCase="'2'">American Express Platinum Santander</div>
             <div *ngSwitchCase="'3'">Visa Platinum BCI</div>
-            <div *ngSwitchCase="'4'">Otro</div>
+            <div *ngSwitchCase="'4'">Otro - {{ debt.otro }}</div>
           </div>
         </td>
         <td>
@@ -46,11 +46,15 @@
           <button class="btn btn-sm btn-success" (click)="pagado(debt)">
             Pagado
           </button>
+
+          <button class="btn btn-sm btn-warning" (click)="editar(debt)">
+            Editar
+          </button>
         </td>
       </tr>
 
       <tr>
-        <td colspan="8" class="text-end"><b>TOTAL</b></td>
+        <td colspan="9" class="text-end"><b>TOTAL</b></td>
         <td class="text-end">
           {{ getTotal() | currency: "CLP":"symbol-narrow" }}
         </td>

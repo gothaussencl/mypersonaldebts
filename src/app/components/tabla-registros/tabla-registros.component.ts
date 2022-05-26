@@ -1,5 +1,6 @@
 import { formatDate } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tabla-registros',
@@ -14,7 +15,7 @@ export class TablaRegistrosComponent implements OnInit {
 
   dateNow: any;
 
-  constructor() {
+  constructor(private router: Router) {
     this.dateNow = new Date();
   }
 
@@ -32,6 +33,7 @@ export class TablaRegistrosComponent implements OnInit {
     return debt.pagos.find((p: any) => {
       let monthAndYearNow = formatDate(this.dateNow, 'yyyy-MM', 'en');
       let monthAndYearDebt = formatDate(p, 'yyyy-MM', 'en');
+
       return monthAndYearDebt === monthAndYearNow;
     })
       ? true
@@ -46,5 +48,9 @@ export class TablaRegistrosComponent implements OnInit {
     let pagados = debt.pagos.length;
 
     return debt.cuotas - pagados;
+  }
+
+  editar(debt: any) {
+    this.router.navigateByUrl(`/edit-debt/${debt.uid}`);
   }
 }

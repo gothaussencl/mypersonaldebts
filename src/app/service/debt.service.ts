@@ -17,7 +17,7 @@ export class DebtService {
   }
 
   saveDebts(debt: any) {
-    let _debt = { ...debt, uid: uuidv4(), pagos: [] };
+    let _debt = { ...debt, uid: uuidv4() };
 
     this.debts.push(_debt);
 
@@ -38,6 +38,19 @@ export class DebtService {
 
     // actualizo array
     this.debts[objIndex].pagos.push(formatDate(new Date(), 'yyyy-MM-dd', 'en'));
+
+    localStorage.setItem('debts', JSON.stringify(this.debts));
+    this.loadDebts();
+  }
+
+  getDebt(uid: any) {
+    return this.debts.find((p) => p.uid === uid);
+  }
+
+  updateDebt(debt: any) {
+    let objIndex = this.debts.findIndex((p) => p.uid === debt.uid);
+
+    this.debts[objIndex] = debt;
 
     localStorage.setItem('debts', JSON.stringify(this.debts));
     this.loadDebts();

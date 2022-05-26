@@ -59,10 +59,20 @@
       </div>
     </div>
 
+    <div class="row pt-4" *ngIf="this.form.controls['origen'].value === '4'">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="">Especifica</label>
+
+          <input type="text" class="form-control" formControlName="otro" />
+        </div>
+      </div>
+    </div>
+
     <div class="row pt-4">
       <div class="col-md-12 text-center">
         <button class="btn btn-success btn-lg" [disabled]="form.invalid">
-          Crear
+          {{ isEdit ? "Editar" : "Crear" }}
         </button>
       </div>
     </div>

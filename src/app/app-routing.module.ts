@@ -17,6 +17,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/add-debt/add-debt.module').then((m) => m.AddDebtModule),
   },
+  {
+    path: 'edit-debt/:id',
+    loadChildren: () =>
+      import('./pages/add-debt/add-debt.module').then((m) => m.AddDebtModule),
+  },
 ];
 
 @NgModule({
