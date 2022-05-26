@@ -43,7 +43,11 @@
           <button class="btn btn-sm btn-danger" (click)="delete(debt)">
             Borrar
           </button>
-          <button class="btn btn-sm btn-success" (click)="pagado(debt)">
+          <button
+            class="btn btn-sm btn-success"
+            (click)="pagado(debt)"
+            *ngIf="getPagoActual(debt)"
+          >
             Pagado
           </button>
 
